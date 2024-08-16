@@ -1,0 +1,16 @@
+version: '3'
+services:
+    okxracerbot:
+        container_name: 'OKXRacerBot'
+        stop_signal: SIGINT
+        build:
+            context: .
+        working_dir: /app
+        volumes:
+            - .:/app
+        entrypoint: "python3 main.py"
+        command: ["-a", "1"]
+        environment:
+        - TZ=Europe/Chisinau
+        restart: unless-stopped
+        env_file: .env
